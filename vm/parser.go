@@ -12,8 +12,8 @@ DUMP
 
 <instruction> <operand>\n
 
-// PUSH and POP are the only instructions that require an operand
-// all other ops don't require an operand and can be omitted
+// PUSH is the only instruction that takes an operand
+// all other instructions don't require an operand and can be omitted
 */
 
 import (
