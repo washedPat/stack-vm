@@ -6,7 +6,7 @@ I made this just a fun exercise but I found interesting none the less.
 # Usage
 1. clone this repo
 2. go get any deps
-3. run `go run main.go -path="./demo.vm`
+3. run `go run main.go -path=./demo.vm`
 
 # Assembly Language
 ```
@@ -18,3 +18,4 @@ DIV
 MUL
 MOD
 ```
+Edit the `demo.vm` file using the prior syntax to make your own programs.
