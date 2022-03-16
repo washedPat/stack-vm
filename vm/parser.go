@@ -98,6 +98,18 @@ func ParseOperand(op string) (OP, error) {
 		return DIV, nil
 	case "MOD":
 		return MOD, nil
+  case "EQ":
+    return EQ, nil
+  case "GT":
+    return GT, nil
+  case "LT":
+    return LT, nil
+  case "AND":
+    return AND, nil
+  case "OR":
+    return OR, nil
+  case "NOT":
+    return NOT, nil
 	case "DUMP":
 		return DUMP, nil
 	default:

@@ -26,6 +26,12 @@ const (
 	MUL
 	DIV
 	MOD
+	EQ
+	GT
+	LT
+	AND
+	OR
+	NOT
 )
 
 func NewStack() *Stack {
@@ -63,6 +69,24 @@ func (s *Stack) Run(program Program) {
 		case MOD:
 			_, ok := s.Mod()
 			must(ok)
+    case EQ:
+      _, ok := s.EQ()
+      must(ok)
+    case GT:
+      _, ok := s.GT()
+      must(ok)
+    case LT:
+      _, ok := s.LT()
+      must(ok)
+    case AND:
+      _, ok := s.AND()
+      must(ok)
+    case OR:
+      _, ok := s.OR()
+      must(ok)
+    case NOT:
+      _, ok := s.NOT()
+      must(ok)
 		}
 	}
 }
@@ -149,4 +173,104 @@ func (s *Stack) Mod() (int, error) {
 
 	return left % right, nil
 
+}
+
+func (s *Stack) EQ() (int, error) {
+	if len(s.data) < 2 {
+		return 0, fmt.Errorf("Stack is empty")
+	}
+
+	left, _ := s.Pop()
+	right, _ := s.Pop()
+
+	if left == right {
+		s.Push(1)
+		return 1, nil
+	} else {
+		s.Push(0)
+		return 0, nil
+	}
+}
+
+func (s *Stack) GT() (int, error) {
+	if len(s.data) < 2 {
+		return 0, fmt.Errorf("Stack is empty")
+	}
+
+	left, _ := s.Pop()
+	right, _ := s.Pop()
+
+	if left > right {
+		s.Push(1)
+		return 1, nil
+	} else {
+		s.Push(0)
+		return 0, nil
+	}
+}
+
+func (s *Stack) LT() (int, error) {
+	if len(s.data) < 2 {
+		return 0, fmt.Errorf("Stack is empty")
+	}
+
+	left, _ := s.Pop()
+	right, _ := s.Pop()
+
+	if left < right {
+		s.Push(1)
+		return 1, nil
+	} else {
+		s.Push(0)
+		return 0, nil
+	}
+}
+
+func (s *Stack) AND() (int, error) {
+	if len(s.data) < 2 {
+		return 0, fmt.Errorf("Stack is empty")
+	}
+
+	left, _ := s.Pop()
+	right, _ := s.Pop()
+
+	if left != 0 && right != 0 {
+		s.Push(1)
+		return 1, nil
+	} else {
+		s.Push(0)
+		return 0, nil
+	}
+}
+
+func (s *Stack) OR() (int, error) {
+	if len(s.data) < 2 {
+		return 0, fmt.Errorf("Stack is empty")
+	}
+
+	left, _ := s.Pop()
+	right, _ := s.Pop()
+
+	if left != 0 || right != 0 {
+		s.Push(1)
+		return 1, nil
+	} else {
+		s.Push(0)
+		return 0, nil
+	}
+}
+
+func (s *Stack) NOT() (int, error) {
+	if len(s.data) < 1 {
+		return 0, fmt.Errorf("Stack is empty")
+	}
+
+	data, _ := s.Pop()
+	if data == 0 {
+		s.Push(1)
+		return 1, nil
+	} else {
+		s.Push(0)
+		return 0, nil
+	}
 }
