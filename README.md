@@ -17,5 +17,11 @@ SUB
 DIV
 MUL
 MOD
+EQ
+GT
+LT
+AND
+OR
+NOT
 ```
 Edit the `demo.vm` file using the prior syntax to make your own programs.
